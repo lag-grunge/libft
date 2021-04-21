@@ -12,11 +12,11 @@ CFLAGS = -Wall -Wextra -Werror
 
 all : ${NAME}
 
-${NAME} :	${OBJS}
-	ar rcs ~/$(PROJ)/${NAME} $?
+$(NAME) :	${OBJS}
+	ar rcs ${NAME} $?
 
 %.o : %.c
-	${CC} ${CFLAGS} -I ${INCLUDE} -c $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} -I ${INCLUDE} -c $< -o $@
 
 clean:
 	rm -f ${OBJS}
