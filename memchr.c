@@ -29,7 +29,7 @@ void *ft_memchr(const void *s, int c, size_t n)
 
 #include <stdio.h>
 
-int main()
+static int main()
 {
     char s[13] = "Its string!!!";
     int c;
