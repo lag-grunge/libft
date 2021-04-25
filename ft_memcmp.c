@@ -36,7 +36,7 @@ int     ft_memcmp(const void *s1, const void *s2, size_t n)
 
 #include <stdio.h>
 
-int main()
+static int main()
 {
     const char *s1 = "ABXCD";
     const char *s2 = "ABUCD";
