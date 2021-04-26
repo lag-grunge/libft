@@ -1,4 +1,4 @@
-SRCS = memset.c bzero.c memcpy.c memccpy.c 
+SRCS = ft_.*.c 
 
 OBJS = $(SRCS:%.c=%.o)
 
