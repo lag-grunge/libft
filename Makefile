@@ -10,7 +10,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-all : ${NAME}
+all : $(NAME)
 
 $(NAME) :	${OBJS}
 	ar rcs ${NAME} $?
@@ -27,3 +27,4 @@ fclean: clean
 re	: fclean all
 
 .PHONY: all clean fclean re
+

@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/26 14:00:58 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/26 14:07:53 by sdalton          ###   ########.fr       */
+/*   Created: 2021/04/26 12:09:55 by sdalton           #+#    #+#             */
+/*   Updated: 2021/04/26 15:51:32 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*	The strlen() function calculates the length of the string pointed 		*/	
-/*		to by s, excluding the terminating null byte ('\0').				*/
-/*	RETURN VALUE        													*/
-/*		The strlen() function returns the number of bytes in the string		*/
-/*		pointed to by s. 													*/
+/*	The memcpy() function copies n bytes from memory area src to		*/
+/*		memory area dest.  The memory areas must not overlap.  Use		*/
+/*		memmove(3) if the memory areas do overlap.						*/
+/*		The memcpy() function returns a pointer to dest.				*/
 
-size_t	ft_strlen(const char *s)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t	i;
 
 	i = 0;
-	while (s[i])
+	while (i < n)
+	{
+		((char *)dst)[i] = ((char *)src)[i];
 		i++;
-	return (i);
+	}
+	return (dst);
 }
