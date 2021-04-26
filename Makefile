@@ -1,4 +1,4 @@
-SRCS = ft_.*.c 
+SRCS = ft_*.c 
 
 OBJS = $(SRCS:%.c=%.o)
 
