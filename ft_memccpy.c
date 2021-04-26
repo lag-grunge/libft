@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 12:14:59 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/26 12:38:05 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/04/26 19:34:10 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	unsigned char	cu;
 
 	i = 0;
-	cu = (char)c;
+	cu = (unsigned char)c;
 	while (i < n)
 	{
 		((char *)dst)[i] = ((char *)src)[i];
