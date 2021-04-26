@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 17:01:05 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/26 17:40:55 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/04/26 20:17:22 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@
 
 static int	ft_islower(int c)
 {
-	unsigned char	cu;
-
-	cu = (unsigned char)c;
-	return ('a' <= cu && cu <= 'z');
+	return ('a' <= c && c <= 'z');
 }
 
 int	ft_toupper(int c)

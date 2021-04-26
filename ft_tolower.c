@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 17:13:32 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/26 17:34:12 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/04/26 20:17:52 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@
 
 static int	ft_isupper(int c)
 {
-	unsigned char	cu;
-
-	cu = (unsigned char)c;
-	return ('A' <= cu && cu <= 'Z');
+	return ('A' <= c && c <= 'Z');
 }
 
 int	ft_tolower(int c)
