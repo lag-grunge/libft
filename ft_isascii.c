@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 16:35:47 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/26 17:33:00 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/04/26 20:14:09 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,5 @@
 
 int	ft_isascii(int c)
 {
-	unsigned char	cu;
-
-	cu = (unsigned char) c;
-	return (0 <= cu && cu <= 127);
+	return (0 <= c && c <= 127);
 }
