@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 12:54:16 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/26 18:59:22 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/04/26 19:54:21 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@
 RETURN VALUE
        The converted value or 0 on error.
 **/
+
+static int	ft_isspace(int c)
+{
+	unsigned char	cu;
+
+	cu = (unsigned char)c;
+	return ((9 <= cu && cu <= 13) || cu == 32);
+}
 
 int	ft_atoi(char *s)
 {
