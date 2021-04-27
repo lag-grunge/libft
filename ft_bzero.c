@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/26 14:00:58 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/26 14:07:53 by sdalton          ###   ########.fr       */
+/*   Created: 2021/04/26 12:00:31 by sdalton           #+#    #+#             */
+/*   Updated: 2021/04/26 12:08:08 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*	The strlen() function calculates the length of the string pointed 		*/	
-/*		to by s, excluding the terminating null byte ('\0').				*/
-/*	RETURN VALUE        													*/
-/*		The strlen() function returns the number of bytes in the string		*/
-/*		pointed to by s. 													*/
+/*		The bzero() function erases the data in the n bytes of the memory	*/
+/*       	starting at the location pointed to by s, by writing zeros 		*/	
+/*        	(bytes	containing '\0') to that area.							*/
+/*		Return value is none.												*/
 
-size_t	ft_strlen(const char *s)
+void	ft_bzero(void *b, size_t n)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	ft_memset(b, 0, n);
 }

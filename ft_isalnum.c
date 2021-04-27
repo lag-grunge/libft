@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/26 14:00:58 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/26 14:07:53 by sdalton          ###   ########.fr       */
+/*   Created: 2021/04/26 16:24:42 by sdalton           #+#    #+#             */
+/*   Updated: 2021/04/26 16:33:36 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*	The strlen() function calculates the length of the string pointed 		*/	
-/*		to by s, excluding the terminating null byte ('\0').				*/
-/*	RETURN VALUE        													*/
-/*		The strlen() function returns the number of bytes in the string		*/
-/*		pointed to by s. 													*/
+/* isalnum()
+              checks for an alphanumeric character; it is equivalent to
+              (isalpha(c) || isdigit(c)).
+*/
 
-size_t	ft_strlen(const char *s)
+int	ft_isalnum(int c)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	return (ft_isdigit(c) || ft_isalpha(c));
 }

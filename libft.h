@@ -1,9 +1,7 @@
 #ifndef LIBFT_H
 # define LIBFT_H
-#include <string.h> //memset other lib.c
-#include <stdlib.h> //malloc
-#include <stddef.h> //size_t
-#include <io.h> //write
+# include <stdlib.h>
+# include <stddef.h>
 
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
@@ -20,6 +18,13 @@ char    *ft_strrchr(const char *str, int c);
 char    *ft_strnstr(const char	*big, const char *little, size_t len);
 int     ft_strncmp(const char	*s1, const char	*s2, size_t len);
 void    *ft_calloc(size_t nmemb, size_t size);
-
+int		ft_isdigit(int c);
+int		ft_isalpha(int c);
+int		ft_atoi(char *s);
+int		ft_isalnum(int c);
+int		ft_isascii(int c);
+int		ft_isprint(int c);
+int		ft_tolower(int c);
+int		ft_toupper(int c);
 
 #endif
