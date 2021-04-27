@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 10:53:43 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/27 10:56:45 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/04/27 19:40:22 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ char	*ft_strnstr(const char	*big, const char *little, size_t len)
 
 	i = 0;
 	little_len = ft_strlen(little);
-	while (i < len)
+	if (!little_len)
+		return ((char *)big);
+	while (i + little_len <= len && big[i])
 	{
 		if (!ft_memcmp(big + i, little, little_len))
 			return ((char *)big + i);
@@ -36,3 +38,34 @@ char	*ft_strnstr(const char	*big, const char *little, size_t len)
 	}
 	return (NULL);
 }
+/*
+#include <string.h>
+#include <stdio.h>
+
+int main()
+{
+
+
+		// char *s2 = "MZIRIBMZE";
+  		// size_t max = strlen(s2);
+  		// char *i1 = strnstr(s1, s2, max);
+  		// char *i2 = ft_strnstr(s1, s2, max);
+		// printf("%d\n", i1 == i2);
+
+		// char *s1 = "FF";
+       	// char *s2 = "see FF your FF return FF now FF";
+       	// char *i1 = strnstr(s1, s2, 4);
+       	// char *i2 = ft_strnstr(s1, s2, 4);
+		
+		char *s1 = "oh no not the empty string !";
+		char *s2 = "";
+		size_t max = 0;
+		char *i1 = strnstr(s1, s2, max);
+		char *i2 = ft_strnstr(s1, s2, max);
+
+       	if (i1 == i2)
+        	exit(0);
+       	exit(1);
+  
+}
+*/
