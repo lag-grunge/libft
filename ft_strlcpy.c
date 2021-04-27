@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 14:08:56 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/26 14:19:05 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/04/27 13:55:18 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t n)
 	if (i > 0)
 	{
 		ft_memcpy(dst, src, src_len);
-		ft_bzero(dst + src_len, i + 1);
-	}
-	else
-	{
-		ft_memcpy(dst, src, n - 1);
-		dst[n - 1] = 0;
-	}
+		dst[src_len] = 0;
+	}	
 	return (ft_strlen(src));
 }
