@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 14:19:37 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/27 15:41:14 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/04/27 18:25:16 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,24 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	char		*cp;
 	size_t		dst_len;
 	size_t		src_len;
-	size_t		min;
 
 	dst_len = ft_strlen(dst);
 	src_len = ft_strlen(src);
 	cp = dst + dst_len;
 	if ((int)(size - 1) > (int)(dst_len + src_len))
 	{
-		min = src_len;
-		dst[dst_len + min] = 0;
+		dst[dst_len + src_len] = 0;
+		ft_memcpy(cp, src, src_len);
+		return (dst_len + src_len);
 	}
 	else if ((int)(size - 1) > (int)(dst_len))
 	{
-		min = size - dst_len - 1;
-		dst[dst_len + min] = 0;
+		dst[size - 1] = 0;
+		ft_memcpy(cp, src, size - dst_len - 1);
+		return (dst_len + src_len);
 	}
 	else
-		min = 0;
-	ft_memcpy(cp, src, min);
-	return (size + src_len);
+		return (size + src_len);
 }
 /*
 #include <stdio.h>
@@ -53,13 +52,12 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 
 int main()
 {
-	char *str = "the cake is a lie !\0I'm hidden lol\r\n";
-	char buff1[0xF00] = "there is no stars in the sky";
-	char buff2[0xF00] = "there is no stars in the sky";
-	size_t max = strlen("the cake is a lie !\0I'm hidden lol\r\n") + 4;
-	size_t r1 = strlcat(buff1, str, 0);
-	size_t r2 = ft_strlcat(buff2, str, 0);
-	printf("%s\n", buff1);
-	printf("%s\n", buff2);
+     char s1[4] = "";
+     char s2[4] = "";
+  	size_t r1 = __builtin___strlcat_chk (s1, "thx to ntoniolo for this test !", 
+	4, __builtin_object_size (s1, 2 > 1 ? 1 : 0));
+  	size_t r2 = ft_strlcat(s2, "thx to ntoniolo for this test !", 4);
+	printf("%s\n", s1);
+	printf("%s\n", s2);
 }
 */
