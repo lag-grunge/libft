@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/27 10:53:43 by sdalton           #+#    #+#             */
+/*   Updated: 2021/04/27 10:56:45 by sdalton          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 /** The strnstr() function locates the	first occurrence of the	null-termi
 *     nated string little in the	string big, where not more than	len characters
@@ -9,28 +21,18 @@
 *     the first occurrence of little is returned.
 **/
 
-char    *ft_strnstr(const char	*big, const char *little, size_t len)
+char	*ft_strnstr(const char	*big, const char *little, size_t len)
 {
-    size_t i;
-    size_t little_len;
+	size_t	i;
+	size_t	little_len;
 
-    i = 0;
-    little_len = ft_strlen(little);
-    while (i < len)
-    {
-        if(!ft_memcmp(big + i, little, little_len))
-            return ((char *)big + i);
-        i++;
-    }
-    return (NULL);
-}
-
-#include <stdio.h>
-
-int main()
-{
-    char * res, * res2;
- //   res = strstr(NULL, "sdhdfh");
-    res2 = ft_strnstr(NULL, "sdhdfh", 3);
-    return (0);
+	i = 0;
+	little_len = ft_strlen(little);
+	while (i < len)
+	{
+		if (!ft_memcmp(big + i, little, little_len))
+			return ((char *)big + i);
+		i++;
+	}
+	return (NULL);
 }
