@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 10:44:47 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/27 10:45:01 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/04/27 12:48:39 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ char	*ft_strrchr(const char *str, int c)
 
 	str_len = ft_strlen(str);
 	cu = c;
+	if (!cu)
+		return ((char *)str + str_len);
 	res = NULL;
 	next = (char *)ft_memchr(str, cu, str_len);
 	while (next)
