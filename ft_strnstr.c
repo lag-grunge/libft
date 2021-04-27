@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 10:53:43 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/27 19:40:22 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/04/27 19:42:38 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_strnstr(const char	*big, const char *little, size_t len)
 	little_len = ft_strlen(little);
 	if (!little_len)
 		return ((char *)big);
-	while (i + little_len <= len && big[i])
+	while (big[i] && (i + little_len <= len))
 	{
 		if (!ft_memcmp(big + i, little, little_len))
 			return ((char *)big + i);
@@ -57,8 +57,14 @@ int main()
        	// char *i1 = strnstr(s1, s2, 4);
        	// char *i2 = ft_strnstr(s1, s2, 4);
 		
-		char *s1 = "oh no not the empty string !";
-		char *s2 = "";
+		// char *s1 = "oh no not the empty string !";
+		// char *s2 = "";
+		// size_t max = 0;
+		// char *i1 = strnstr(s1, s2, max);
+		// char *i2 = ft_strnstr(s1, s2, max);
+
+		char *s1 = (void *)0;
+		char *s2 = "fake";
 		size_t max = 0;
 		char *i1 = strnstr(s1, s2, max);
 		char *i2 = ft_strnstr(s1, s2, max);
