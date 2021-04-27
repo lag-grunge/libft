@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 14:08:56 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/27 13:55:18 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/04/27 14:28:14 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,18 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t n)
 	src_len = ft_strlen(src);
 	i = n - src_len - 1;
 	if (i > 0)
+	{
 		min = src_len;
-	else
+		dst[min] = 0;
+	}
+	else if (n > 0)
+	{
 		min = n - 1;
+		dst[min] = 0;
+	}
+	else
+		min = 0;
 	ft_memcpy(dst, src, min);
-	dst[min] = 0;
 	return (ft_strlen(src));
 }
 /*
@@ -48,8 +55,9 @@ int main()
 	char dest2[20];
 	ft_memset(dest1, 'A', sizeof(dest1));
 	ft_memset(dest2, 'A', sizeof(dest2));
-	printf("%lu %s\n", ft_strlcpy(dest1, "hello !", 2), dest1);
-	printf("%lu %s\n", strlcpy(dest2, "hello !", 2), dest2);
+	printf("%lu %s\n", ft_strlcpy(dest1, "hello !", 0), dest1);
+	printf("%lu %s\n", strlcpy(dest2, "hello !", 0), dest2);
 
 	return (0);
-}*/
+}
+*/
