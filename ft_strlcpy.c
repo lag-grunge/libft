@@ -24,15 +24,32 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t n)
 {
-	size_t	i;
+	int		i;
+	size_t	min;
 	size_t	src_len;
 
 	src_len = ft_strlen(src);
 	i = n - src_len - 1;
 	if (i > 0)
-	{
-		ft_memcpy(dst, src, src_len);
-		dst[src_len] = 0;
-	}	
+		min = src_len;
+	else
+		min = n - 1;
+	ft_memcpy(dst, src, min);
+	dst[min] = 0;
 	return (ft_strlen(src));
 }
+/*
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+	char dest1[20];
+	char dest2[20];
+	ft_memset(dest1, 'A', sizeof(dest1));
+	ft_memset(dest2, 'A', sizeof(dest2));
+	printf("%lu %s\n", ft_strlcpy(dest1, "hello !", 2), dest1);
+	printf("%lu %s\n", strlcpy(dest2, "hello !", 2), dest2);
+
+	return (0);
+}*/
