@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 10:47:38 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/27 11:50:14 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/04/27 11:50:53 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 char	*ft_strchr(const char *str, int c)
 {
-	size_t	i;
-	unsigned char cu;
+	size_t			i;
+	unsigned char	cu;
 
 	i = 0;
 	cu = c;
