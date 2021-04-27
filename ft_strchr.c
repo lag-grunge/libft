@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 10:47:38 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/27 10:48:04 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/04/27 11:50:14 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@
 char	*ft_strchr(const char *str, int c)
 {
 	size_t	i;
-	size_t	cu;
+	unsigned char cu;
 
 	i = 0;
 	cu = c;
 	while (str[i])
 	{
-		if (cu == str[i])
+		if (cu == (unsigned char)(str[i]))
 			return ((char *)str + i);
 		i++;
 	}
