@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 15:00:32 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/28 19:04:25 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/04/28 19:13:22 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,19 +75,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	ft_strlcpy(ts, s1 + start, end - start + 1);
 	return (ts);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int main()//(int argc, char *argv[])
-{
-	char *s1 = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n";
-     char *s2 = "Hello \t  Please\n Trim me !";
-     char *ret = ft_strtrim(s1, " \n\t");
-
-     if (!strcmp(ret, s2))
-         printf("TEST_SUCCESS");
-     printf("%s\n %s\n TEST_FAILED", s2, ret);
-	// if (argc == 3)
-	// 	printf("%s\n", ft_strtrim(argv[1], argv[2]));
-}*/
