@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 12:54:16 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/28 11:18:42 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/04/28 12:04:22 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,12 @@ int	ft_atoi(char *s)
 	}
 	else if (*s == '+')
 		s++;
-	while (ft_isdigit(*s) && digits++ < 10)
+	while (ft_isdigit(*s) && digits++ < 9)
 		n = 10 * n + (*s++) - 48;
 	if (ft_isdigit(*s) && !(ft_isdigit(s[1])))
 		return (check_overflow(9 * n + (*s++) - 48, n, sign));
 	else if (ft_isdigit(*s))
-		return (-1);
+		return (0);
 	else
 		return (sign * n);
 }
