@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 11:25:05 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/28 12:43:39 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/04/28 13:50:28 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 			ft_bzero(memory, bytes);
 			return (memory);
 		}
+		return (NULL);
 	}
-	return (NULL);
+	return (malloc (1));
 }
