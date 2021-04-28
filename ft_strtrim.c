@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 15:00:32 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/28 19:13:22 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/04/28 19:14:57 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ static int	is_trim(char const *set, int c)
 	unsigned char	cu;
 
 	i = 0;
-	if (!c)
-		return (1);
 	cu = c;
 	while (set[i])
 	{
@@ -55,7 +53,7 @@ static size_t	end_string(char const *s1, char const *set, size_t start)
 {
 	size_t	i;
 
-	i = ft_strlen(s1);
+	i = ft_strlen(s1) - 1;
 	while (i >= start && is_trim(set, s1[i]))
 		i--;
 	return (i + 1);
