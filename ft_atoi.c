@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 12:54:16 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/28 12:04:22 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/04/28 12:13:43 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	ft_atoi(char *s)
 	if (ft_isdigit(*s) && !(ft_isdigit(s[1])))
 		return (check_overflow(9 * n + (*s++) - 48, n, sign));
 	else if (ft_isdigit(*s))
-		return (0);
+		return (-(sign == 1));
 	else
 		return (sign * n);
 }
