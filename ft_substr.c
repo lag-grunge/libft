@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 14:03:36 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/28 16:23:21 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/04/28 16:25:44 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 
 	if (start > ft_strlen(s))
-		return (NULL);
+		return (ft_calloc(1, 1));
 	ss_len = ft_strlen(s) - start + 1;
 	if (ss_len > len)
 		ss_len = len + 1;
