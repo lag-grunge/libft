@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 15:00:32 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/28 15:27:23 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/04/28 19:04:25 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,48 +23,71 @@
 /*’s1’ with the characters specified in ’set’ removed			*/
 /*from the beginning and the end of the string.					*/
 
-static int	is_copy(char const *set, int c)
+static int	is_trim(char const *set, int c)
+{
+	size_t			i;
+	unsigned char	cu;
+
+	i = 0;
+	if (!c)
+		return (1);
+	cu = c;
+	while (set[i])
+	{
+		if (((unsigned char *)set)[i] == cu)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+static size_t	start_string(char const *s1, char const *set)
 {
 	size_t	i;
 
 	i = 0;
-	while (set[i])
-	{
-		if (set[i] == c)
-			return (0);
+	while (is_trim(set, s1[i]))
 		i++;
-	}
-	return (1);
+	return (i);
+}
+
+static size_t	end_string(char const *s1, char const *set, size_t start)
+{
+	size_t	i;
+
+	i = ft_strlen(s1);
+	while (i >= start && is_trim(set, s1[i]))
+		i--;
+	return (i + 1);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*ts;
-	size_t	i;
-	size_t	j;
+	size_t	start;
+	size_t	end;
 
-	i = 0;
-	j = 0;
-	ts = ft_strdup(s1);
+	start = start_string(s1, set);
+	end = end_string(s1, set, start);
+	ts = (char *)malloc(sizeof(char) * (end - start + 1));
 	if (!ts)
 		return (NULL);
-	while (s1[i])
-	{
-		if (is_copy(set, s1[i]))
-		{
-			ts[j] = s1[i];
-			j++;
-		}
-		i++;
-	}
-	ts[j] = 0;
+	ft_strlcpy(ts, s1 + start, end - start + 1);
 	return (ts);
 }
 /*
 #include <stdio.h>
+#include <string.h>
 
-int main(int argc, char *argv[])
+int main()//(int argc, char *argv[])
 {
-	if (argc == 3)
-		printf("%s\n", ft_strtrim(argv[1], argv[2]));
+	char *s1 = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n";
+     char *s2 = "Hello \t  Please\n Trim me !";
+     char *ret = ft_strtrim(s1, " \n\t");
+
+     if (!strcmp(ret, s2))
+         printf("TEST_SUCCESS");
+     printf("%s\n %s\n TEST_FAILED", s2, ret);
+	// if (argc == 3)
+	// 	printf("%s\n", ft_strtrim(argv[1], argv[2]));
 }*/
