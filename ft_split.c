@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 11:54:22 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/29 17:42:29 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/04/29 18:11:53 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,18 @@ static char	*start_string(char *tail, char c)
 	return (tail);
 }
 
-static void	get_word(char **tail, char **word, char *cur_delim, size_t word_len)
+static char	*get_word(char **tail, char *cur_delim)
 {
-	*word = (char *)malloc(sizeof(char) * (word_len + 1));
-	if (word)
-	{
-		ft_strlcpy(*word, *tail, word_len + 1);
-		*tail = start_string(cur_delim, *cur_delim);
-	}
+	size_t	word_len;
+	char	*word;
+
+	word_len = cur_delim - *tail;
+	word = (char *)malloc(sizeof(char) * (word_len + 1));
+	if (!word)
+		return (NULL);
+	ft_strlcpy(word, *tail, word_len + 1);
+	*tail = start_string(cur_delim, *cur_delim);
+	return (word);
 }
 
 static char	**init_split(char *tail, size_t count)
@@ -69,14 +73,13 @@ char	**ft_split(const char *s, char c)
 	char			*tail;
 	char			*cur_delim;
 
-	word = NULL;
-	if (!s)
-		return (NULL);
 	tail = (char *)s;
-	cur_delim = ft_memchr((const void *)s, (int) c, ft_strlen(s));
+	if (!count_words)
+		tail = start_string(tail, c);
+	cur_delim = ft_memchr((const void *)tail, (int) c, ft_strlen(tail));
 	if (!cur_delim)
 		return (init_split(tail, count_words));
-	get_word(&tail, &word, cur_delim, cur_delim - s);
+	word = get_word(&tail, cur_delim);
 	if (!word)
 		return (NULL);
 	count_words++;
@@ -96,7 +99,7 @@ int main()
 {
 	char **split;
 
-	split = ft_split("42 and all smth ", ' ');
+	split = ft_split(" 42 and all smth ", ' ');
 	while (*split)
 	{
 		printf("%s\n", *split);
