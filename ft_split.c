@@ -6,12 +6,11 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 11:54:22 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/29 17:32:44 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/04/29 17:42:29 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 /*Function name ft_split											*/
 /*Prototype char **ft_split(char const *s, char c);					*/
@@ -91,6 +90,7 @@ char	**ft_split(const char *s, char c)
 	return (split);
 }
 /*
+#include <stdio.h>
 
 int main()
 {
