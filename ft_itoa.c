@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 18:43:52 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/29 19:57:27 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/04/29 20:01:58 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ char	*ft_itoa(int n)
 	sign = (1 - 2 * (n < 0));
 	s_len = get_digits(n) + (n < 0);
 	s = (char *)malloc(sizeof(char) * (s_len + 1));
+	if (!s)
+		return (NULL);
 	s[s_len] = 0;
 	if (n < 0)
 		s[0] = '-';
@@ -68,6 +70,6 @@ char	*ft_itoa(int n)
 
 int main() //(int argc, char *argv[])
 {
-	printf("%s\n", ft_itoa(-2451346));
+	printf("%s\n", ft_itoa(0));
 	return (0);
 }*/
