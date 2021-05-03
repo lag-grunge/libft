@@ -23,14 +23,12 @@
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	size_t	bytes;
-	size_t	i;
 	void	*memory;
 
 	bytes = nmemb * size;
 	if (bytes)
 	{
 		memory = malloc(bytes);
-		i = 0;
 		if (memory)
 		{
 			ft_bzero(memory, bytes);
