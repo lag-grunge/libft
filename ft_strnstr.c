@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 10:53:43 by sdalton           #+#    #+#             */
-/*   Updated: 2021/05/04 14:46:39 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/05/04 17:37:58 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strnstr(const char	*big, const char *little, size_t len)
 
 	i = 0;
 	little_len = ft_strlen(little);
-	if (!little)
+	if (!(*little))
 		return ((char *)big);
 	while (big[i] && (i + little_len <= len))
 	{
@@ -44,7 +44,6 @@ char	*ft_strnstr(const char	*big, const char *little, size_t len)
 
 int main()
 {
-
 
 		// char *s2 = "MZIRIBMZE";
   		// size_t max = strlen(s2);
@@ -72,5 +71,10 @@ int main()
        	if (i1 == i2)
         	exit(0);
        	exit(1);
+
+		ft_strnstr("000000123", "123", 9);
+
+		return (0);
   
-}*/
+}
+*/
