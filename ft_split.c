@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 11:54:22 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/29 18:11:53 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/05/04 17:14:39 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,16 @@ static char	*start_string(char *tail, char c)
 	return (tail);
 }
 
-static char	*get_word(char **tail, char *cur_delim)
+static char	*get_word(char *tail, char *cur_delim)
 {
 	size_t	word_len;
 	char	*word;
 
-	word_len = cur_delim - *tail;
+	word_len = cur_delim - tail;
 	word = (char *)malloc(sizeof(char) * (word_len + 1));
 	if (!word)
 		return (NULL);
-	ft_strlcpy(word, *tail, word_len + 1);
-	*tail = start_string(cur_delim, *cur_delim);
+	ft_strlcpy(word, tail, word_len + 1);
 	return (word);
 }
 
@@ -73,9 +72,7 @@ char	**ft_split(const char *s, char c)
 	char			*tail;
 	char			*cur_delim;
 
-	tail = (char *)s;
-	if (!count_words)
-		tail = start_string(tail, c);
+	tail = start_string(tail, c);
 	cur_delim = ft_memchr((const void *)tail, (int) c, ft_strlen(tail));
 	if (!cur_delim)
 		return (init_split(tail, count_words));
