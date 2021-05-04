@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 11:54:22 by sdalton           #+#    #+#             */
-/*   Updated: 2021/05/04 17:21:44 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/05/04 17:32:07 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	**ft_split(const char *s, char c)
 	if (!word)
 		return (NULL);
 	count_words++;
-	split = ft_split(tail, c);
+	split = ft_split(cur_delim, c);
 	if (!split)
 	{
 		free(word);
@@ -105,5 +105,4 @@ int main()
 		split++;
 	}
 
-}
-*/
+}*/
