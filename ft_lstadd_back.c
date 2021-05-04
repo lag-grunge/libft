@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 14:33:47 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/30 14:39:19 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/05/04 11:28:36 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*last;
-	
+	t_list	*last;	
+
 	last = ft_lstlast(*lst);
 	last->next = new;
 }

@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 13:15:23 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/30 14:21:20 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/05/04 11:26:38 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 /*	External functs. None                                       */
 /*	Description Counts the number of elements in a list.        */
 
-int		ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
 	int		i;
 	t_list	*next;

@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 11:37:47 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/30 14:16:10 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/05/04 11:24:26 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 /*		Description Applies the function ’f’ to each character of the     	*/
 /*		string ’s’ to create a new string (with malloc(3))                  */
 /*		resulting from successive applications of ’f’.                      */
-	
+
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	unsigned int	i;

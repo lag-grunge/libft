@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 12:17:34 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/30 12:37:10 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/05/04 11:27:21 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,3 @@ t_list	*ft_lstnew(void *content)
 	new_list->next = NULL;
 	return (new_list);
 }
-
-
-
-
-
-
-
-
-

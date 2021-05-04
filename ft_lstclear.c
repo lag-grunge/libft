@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 15:36:05 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/30 15:45:48 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/05/04 11:29:08 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@
 	Finally, the pointer to the list must be set to
 	NULL.														*/
 
-
-void ft_lstclear(t_list **lst, void (*del)(void*))
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
 	t_list	*cur;
 
