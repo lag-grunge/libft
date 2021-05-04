@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 11:54:22 by sdalton           #+#    #+#             */
-/*   Updated: 2021/05/04 17:14:39 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/05/04 17:17:25 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,11 @@ char	**ft_split(const char *s, char c)
 	char			*tail;
 	char			*cur_delim;
 
-	tail = start_string(tail, c);
+	tail = start_string((char *)s, c);
 	cur_delim = ft_memchr((const void *)tail, (int) c, ft_strlen(tail));
 	if (!cur_delim)
 		return (init_split(tail, count_words));
-	word = get_word(&tail, cur_delim);
+	word = get_word(tail, cur_delim);
 	if (!word)
 		return (NULL);
 	count_words++;
