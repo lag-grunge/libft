@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 10:53:43 by sdalton           #+#    #+#             */
-/*   Updated: 2021/05/04 14:44:48 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/05/04 14:45:35 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ char	*ft_strnstr(const char	*big, const char *little, size_t len)
 	size_t	little_len;
 
 	i = 0;
+	little_len = 0;
 	if (!little_len)
 		return ((char *)big);
 	little_len = ft_strlen(little);
