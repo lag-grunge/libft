@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 11:54:22 by sdalton           #+#    #+#             */
-/*   Updated: 2021/05/04 17:17:25 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/05/04 17:21:44 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 
 static char	*start_string(char *tail, char c)
 {
+	if (!c)
+		return (tail);
 	while (*tail == c)
 		tail++;
 	return (tail);
