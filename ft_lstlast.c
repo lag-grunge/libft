@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 13:22:38 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/30 13:44:41 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/05/04 13:07:08 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ t_list	*ft_lstlast(t_list *lst)
 	t_list	*cur;
 
 	cur = lst;
+	if (!cur)
+		return (NULL);
 	next = cur->next;
 	while (next)
 	{
