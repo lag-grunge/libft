@@ -28,14 +28,14 @@ all : ${NAME}
 $(NAME) :	${OBJS}
 	ar rcs ${NAME} $?
 
-bonus : ${NAME} ${OBJS_B}
-	ar rs $?
+bonus : ${OBJS_B}
+	ar rcs ${NAME} $?
 
-.c.o:
+%.o	: 	%.c
 	${CC} ${CFLAGS} -I ${INCLUDE} -c $< -o $@
 
 clean:
-	rm -f ${OBJS}
+	rm -f ${OBJS} ${OBJS_B}
 
 fclean: clean
 	rm -f ${NAME}
@@ -43,4 +43,3 @@ fclean: clean
 re	: fclean all
 
 .PHONY: all clean fclean re
-
