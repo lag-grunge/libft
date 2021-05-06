@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 14:08:56 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/27 14:52:26 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/05/06 14:52:06 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@
  * for strlcpy() src must be NUL-terminated and for strlcat() both src 
  * and dst must be NUL-terminated. **/
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t n)
+unsigned int	ft_strlcpy(char *dst, const char *src, unsigned int n)
 {
-	int		i;
-	size_t	min;
-	size_t	src_len;
+	int				i;
+	unsigned int	min;
+	unsigned int	src_len;
 
 	src_len = ft_strlen(src);
 	i = n - src_len - 1;
@@ -35,7 +35,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t n)
 		min = src_len;
 		dst[min] = 0;
 	}
-	else if (n > 0)
+	else if ((int)n > 0)
 	{
 		min = n - 1;
 		dst[min] = 0;
@@ -43,5 +43,24 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t n)
 	else
 		min = 0;
 	ft_memcpy(dst, src, min);
-	return (ft_strlen(src));
+	return (src_len);
 }
+/*
+#include <stdio.h>
+#include <string.h>
+
+int	main()
+{
+	char dest[42];
+	int  res;
+	char *src =  "dsfhdfh";
+	uint size = -1;
+
+	printf("input %s %u\n", src, size);
+	//res = strlcpy(dest, src, size);
+	//printf("result orig %s %u\n", dest, res);
+	res = ft_strlcpy(dest, src, size);
+	printf("result my %s %u\n", dest, res);
+	
+}
+*/
