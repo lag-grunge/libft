@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 14:19:37 by sdalton           #+#    #+#             */
-/*   Updated: 2021/05/06 16:34:09 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/05/06 16:46:02 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@
  * for strlcpy() src must be NUL-terminated and for strlcat() both src 
  * and dst must be NUL-terminated. **/
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+t_uint	ft_strlcat(char *dst, const char *src, t_uint size)
 {
 	char		*cp;
-	size_t		dst_len;
-	size_t		src_len;
+	t_uint		dst_len;
+	t_uint		src_len;
 
 	dst_len = ft_strlen(dst);
 	src_len = ft_strlen(src);
@@ -54,9 +54,9 @@ int main()
 {
      char s1[4] = "";
      char s2[4] = "";
-  	size_t r1 = __builtin___strlcat_chk (s1, "thx to ntoniolo for this test !", 
+  	t_uint r1 = __builtin___strlcat_chk (s1, "thx to ntoniolo for this test !", 
 	4, __builtin_object_size (s1, 2 > 1 ? 1 : 0));
-  	size_t r2 = ft_strlcat(s2, "thx to ntoniolo for this test !", 4);
+  	t_uint r2 = ft_strlcat(s2, "thx to ntoniolo for this test !", 4);
 	printf("%s\n", s1);
 	printf("%s\n", s2);
 }

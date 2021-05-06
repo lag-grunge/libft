@@ -21,10 +21,10 @@
  * for strlcpy() src must be NUL-terminated and for strlcat() both src 
  * and dst must be NUL-terminated. **/
 
-unsigned int	ft_strlcpy(char *dst, const char *src, unsigned int n)
+t_uint	ft_strlcpy(char *dst, const char *src, t_uint n)
 {
-	unsigned int	cpy;
-	unsigned int	src_len;
+	t_uint	cpy;
+	t_uint	src_len;
 
 	src_len = ft_strlen(src);
 	if (n > src_len)
@@ -42,22 +42,3 @@ unsigned int	ft_strlcpy(char *dst, const char *src, unsigned int n)
 	ft_memcpy(dst, src, cpy);
 	return (src_len);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int	main()
-{
-	char dest[42];
-	int  res;
-	char *src =  "dsfhdfh";
-	uint size = -1;
-
-	printf("input %s %u\n", src, size);
-	//res = strlcpy(dest, src, size);
-	//printf("result orig %s %u\n", dest, res);
-	res = ft_strlcpy(dest, src, size);
-	printf("result my %s %u\n", dest, res);
-	
-}
-*/
