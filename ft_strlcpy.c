@@ -1,12 +1,11 @@
 /* ************************************************************************** */
-/*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 14:08:56 by sdalton           #+#    #+#             */
-/*   Updated: 2021/05/06 14:52:06 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/05/06 15:30:54 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +23,23 @@
 
 unsigned int	ft_strlcpy(char *dst, const char *src, unsigned int n)
 {
-	int				i;
-	unsigned int	min;
+	unsigned int	cpy;
 	unsigned int	src_len;
 
 	src_len = ft_strlen(src);
-	i = n - src_len - 1;
-	if (i > 0)
+	if (n > src_len)
 	{
-		min = src_len;
-		dst[min] = 0;
+		cpy = src_len;
+		dst[cpy] = 0;
 	}
 	else if ((int)n > 0)
 	{
-		min = n - 1;
-		dst[min] = 0;
+		cpy = n - 1;
+		dst[cpy] = 0;
 	}
 	else
-		min = 0;
-	ft_memcpy(dst, src, min);
+		cpy = 0;
+	ft_memcpy(dst, src, cpy);
 	return (src_len);
 }
 /*
