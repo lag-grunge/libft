@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 09:33:07 by sdalton           #+#    #+#             */
-/*   Updated: 2021/05/04 09:37:23 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/05/06 13:41:50 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	ft_putstr_fd(char *s, int fd)
 
 	i = 0;
 	while (s[i])
-	{
-		ft_putchar_fd(s[i], fd);
 		i++;
-	}
+	write(fd, s, i);
 }
