@@ -21,7 +21,7 @@ INCLUDE = ./
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror
 
 all : ${NAME} bonus
 
@@ -29,10 +29,13 @@ $(NAME) :	${OBJS}
 	ar rcs ${NAME} $?
 
 bonus : ${OBJS_B}
-	ar rcs ${NAME} $?
-
+	
 %.o	: 	%.c
 	${CC} ${CFLAGS} -I ${INCLUDE} -c $< -o $@
+$(OBJS_B) : %.o : %.c
+	${CC} ${CFLAGS} -I ${INCLUDE} -c $< -o $@
+	ar rcs ${NAME} $@
+
 
 clean:
 	rm -f ${OBJS} ${OBJS_B}
