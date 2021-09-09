@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 12:54:16 by sdalton           #+#    #+#             */
-/*   Updated: 2021/09/08 16:24:38 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/09/09 19:54:22 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,32 @@ static int	get_digits(long int n, size_t base_len)
 		dig++;
 	}
 	return (dig);
+}
+
+int	ft_atoi_base_l(const char *s, char *base, char *prefix, size_t l)
+{
+	int		n;
+	int		sign;
+	size_t	near_ovflw;
+	size_t	base_len;
+	char 	*pos_base;
+
+	sign = ft_prefix(&s, prefix);
+	if (!sign)
+		return (-1);
+	if (!*s)
+		return (0);
+	n = 0;
+	base_len = ft_strlen(base);
+	near_ovflw = get_digits(INT_MAX, base_len) - 1;
+	pos_base = ft_strchr(base, *s);
+	while (*s && pos_base && near_ovflw-- && l--)
+	{
+		n = base_len * n + (pos_base - base);
+		s++;
+		pos_base = ft_strchr(base, *s);
+	}
+	return (sign * n);
 }
 
 int	ft_atoi_base(const char *s, char *base, char *prefix)
