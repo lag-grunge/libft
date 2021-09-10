@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 12:54:16 by sdalton           #+#    #+#             */
-/*   Updated: 2021/09/10 16:57:52 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/09/10 17:16:25 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,8 +125,11 @@ unsigned	ft_usgn_atoi_base(char *s, char *base, char *prefix, int *ovflw)
 	size_t	base_len;
 	char 	*pos_base;
 
-	if (!ft_prefix(&s, prefix))
+	n = ft_prefix(&s, prefix);
+	if (!n)
 		return (0);
+	else if (n == -1)
+		return (-ft_atoi_base(s, base, prefix, ovflw));
 	if (!*s)
 		return (0);
 	n = 0;
