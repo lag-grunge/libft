@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 12:54:16 by sdalton           #+#    #+#             */
-/*   Updated: 2021/09/10 12:54:51 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/09/10 16:57:52 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ RETURN VALUE
        The converted value or 0 on error.
 **/
 
-static int	ft_prefix(const char **s, const char *prefix)
+static int	ft_prefix(char **s, char *prefix)
 {
 	size_t	prefix_len;
 	int		sign;
@@ -51,19 +51,26 @@ static int	ft_prefix(const char **s, const char *prefix)
 	return (sign);
 }
 
-static int	check_overflow(int n1, int n2, int sign)
+static int	chck_ovflw(int sign, int *prev_sum, int sum, char *c)
 {
-	if (sign == 1)
+	unsigned	usum;
+
+	usum = sum;
+	if (c && *c)
+		return (1);
+	if (sign)
 	{
-		if (n1 > INT_MAX - n2)
-			return (-1);
-		else
-			return (n1 + n2);
+		if (usum == (unsigned)INT_MIN && sign == -1)
+			return (0);
+		if (usum > (unsigned)INT_MIN)
+			return (1);
 	}
-	if (-n1 < INT_MIN + n2)
-		return (0);
 	else
-		return (-n1 - n2);
+	{
+		if (usum < (unsigned)(*prev_sum))
+			return (1);
+	}
+	return (0);
 }
 
 static int	get_digits(long int n, size_t base_len)
@@ -81,54 +88,148 @@ static int	get_digits(long int n, size_t base_len)
 	return (dig);
 }
 
-int	ft_atoi_base(const char *s, char *base, char *prefix)
+int	ft_atoi_base(char *s, char *base, char *prefix, int *ovflw)
 {
 	int		n;
 	int		sign;
-	size_t	near_ovflw;
+	int		near_ovflw;
 	size_t	base_len;
-	char 	*pos_base;
+	char	*pos_base;
 
 	sign = ft_prefix(&s, prefix);
 	if (!sign)
-		return (-1);
+		return (0);
 	if (!*s)
 		return (0);
 	n = 0;
 	base_len = ft_strlen(base);
 	near_ovflw = get_digits(INT_MAX, base_len) - 1;
 	pos_base = ft_strchr(base, *s);
-	while (*s && pos_base && near_ovflw--)
+	while (*s && pos_base)
 	{
 		n = base_len * n + (pos_base - base);
+		if (!near_ovflw && !*ovflw)
+			*ovflw = chck_ovflw(sign, NULL, n, ft_strchr(base, s[1]));
 		s++;
+		near_ovflw--;
 		pos_base = ft_strchr(base, *s);
 	}
-	if (!*s || !pos_base)
-		return (sign * n);
-	if ((size_t)(ft_strchr(base, s[1]) - base) < base_len)
-		return (-(sign == 1));
-	return (check_overflow((base_len - 1) * n + (pos_base - base), n, sign));
+	return (sign * n);
 }
-/*
+
+unsigned	ft_usgn_atoi_base(char *s, char *base, char *prefix, int *ovflw)
+{
+	unsigned n;
+	int		prev;
+	int		near_ovflw;
+	size_t	base_len;
+	char 	*pos_base;
+
+	if (!ft_prefix(&s, prefix))
+		return (0);
+	if (!*s)
+		return (0);
+	n = 0;
+	base_len = ft_strlen(base);
+	near_ovflw = get_digits(UINT_MAX, base_len) - 1;
+	pos_base = ft_strchr(base, *s);
+	while (*s && pos_base)
+	{
+		n = base_len * n + (pos_base - base);
+		if (!near_ovflw && !*ovflw)
+			*ovflw = chck_ovflw(0, &prev, n, ft_strchr(base, s[1]));
+		else if (near_ovflw == 1)
+			prev = n;
+		s++;
+		near_ovflw--;
+		pos_base = ft_strchr(base, *s);
+	}
+	return (n);
+}
+
 #include <stdio.h>
+#define BASE_16 "0123456789abcdef"
+#define PREFIX_16 "0x"
+#define BASE_16_B "0123456789ABCDEF"
+#define PREFIX_16_B "0X"
+#define BASE_10 "0123456789"
+#define PREFIX_10 "\0"
 
 int main(int argc, char *argv[])
 {
 	int	i;
+	int ovflw;
+	long long constants[] = {INT_MAX, INT_MIN, UINT_MAX, LONG_MAX, LONG_MIN, ULONG_MAX};
 
 	if (argc > 1)
 	{
 		i = 1;
-		printf("LONG MAX %ld sizeof %zu\n", LONG_MAX, sizeof(long));
 		while (i < argc)
 		{
+			ovflw = 0;
 			printf("%d ", atoi(argv[i]));
-			printf("%d ", ft_atoi_base(argv[i], "0123456789", "\0"));
-			printf("%d\n", ft_atoi_base(argv[i], "0123456789abcdef", "0x"));
-			
+			printf("%d ", ft_atoi_base(argv[i], BASE_10, PREFIX_10, &ovflw));
+			printf("%d ", ft_atoi_base(argv[i], BASE_16, PREFIX_16, &ovflw));
+			if (ovflw)
+			{
+				ft_putstr_fd("Overflow! ", 2);
+				ft_putstr_fd(argv[i], 2);
+				ft_putchar_fd('\n', 2);
+			}
+			ovflw = 0;
+			printf("%u\n", ft_usgn_atoi_base(argv[i], BASE_16, PREFIX_16, &ovflw));
+			if (ovflw)
+			{
+				ft_putstr_fd("Overflow! ", 2);
+				ft_putstr_fd(argv[i], 2);
+				ft_putchar_fd('\n', 2);
+			}
 			i++;
 		}
+			ovflw = 0; 
+			printf("%u ", UINT_MAX);
+			printf("%u\n", ft_usgn_atoi_base("4294967296", BASE_10, PREFIX_10, &ovflw));
+			if (ovflw)
+			{
+				ft_putstr_fd("Overflow! ", 2);
+				ft_putstr_fd("4294967296", 2);
+				ft_putchar_fd('\n', 2);
+			}
+			i++;
+	}
+	else
+	{
+		size_t i = 0;
+		size_t N = sizeof(constants)/sizeof(*constants);
+		char *s;
+		size_t max_s = get_digits(ULONG_MAX, ft_strlen(BASE_10));
+		int ret;
+
+		s = (char *)malloc(max_s);
+		while (i < N)
+		{
+			ovflw = 0; 
+			ret = sprintf(s, "%lld", constants[i]);
+			s[ret] = 0;
+			printf("%d\n", ft_atoi_base(s, BASE_10, PREFIX_10, &ovflw));
+			if (ovflw)
+			{
+				ft_putstr_fd("Overflow! ", 2);
+				ft_putstr_fd(s, 2);
+				ft_putchar_fd('\n', 2);
+			}
+			ovflw = 0;
+			printf("%u\n", ft_usgn_atoi_base(s, BASE_10, PREFIX_10, &ovflw));
+			if (ovflw)
+			{
+				ft_putstr_fd("Overflow! ", 2);
+				ft_putstr_fd(s, 2);
+				ft_putchar_fd('\n', 2);
+			}
+			i++;
+		}
+
 	}
 
-}*/
+}
+

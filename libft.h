@@ -22,6 +22,8 @@ char	*ft_strrchr(const char *str, int c);
 char	*ft_strnstr(const char	*big, const char *little, size_t len);
 int		ft_strncmp(const char	*s1, const char	*s2, size_t len);
 int		ft_atoi(char *s);
+int		ft_atoi_base(char *s, char *base, char *prefix, int *ovflw);
+unsigned	ft_usgn_atoi_base(char *s, char *base, char *prfx, int *ovflw);
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
