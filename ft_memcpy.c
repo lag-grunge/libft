@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 12:09:55 by sdalton           #+#    #+#             */
-/*   Updated: 2021/04/27 12:09:36 by sdalton          ###   ########.fr       */
+/*   Updated: 2021/07/19 15:28:57 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	size_t	i;
 
 	i = 0;
-	if (!dst && !src)
+	if (!dst || !src)
 		return (NULL);
 	while (i < n)
 	{
