@@ -1,108 +1,133 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   _ft_split.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/29 11:54:22 by sdalton           #+#    #+#             */
-/*   Updated: 2021/05/04 17:36:10 by sdalton          ###   ########.fr       */
+/*   Created: 2021/05/11 10:14:25 by sdalton           #+#    #+#             */
+/*   Updated: 2021/05/11 13:33:26 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-/*Function name ft_split											*/
-/*Prototype char **ft_split(char const *s, char c);					*/
-/*Turn in files -													*/
-/*Parameters #1. The string to be split.							*/
-/*#2. The delimiter character.										*/
-/*Return value The array of new strings resulting from the split.	*/
-/*NULL if the allocation fails.										*/
-/*External functs. malloc, free										*/
-/*Description Allocates (with malloc(3)) and returns an array		*/
-/*of strings obtained by splitting ’s’ using the					*/
-/*character ’c’ as a delimiter. The array must be					*/
-/*ended by a NULL pointer.											*/
 
-static char	*start_string(char *tail, char c)
+static char*	get_next_word_beg(char *cur_delim, char c) 
 {
-	if (!c)
-		return (tail);
-	while (*tail == c)
-		tail++;
-	return (tail);
+	unsigned	i;
+
+	i = 0;	
+	while (cur_delim[i] && cur_delim[i] == c)
+		i++;
+	return (cur_delim + i); 
 }
 
-static char	*get_word(char *tail, char *cur_delim)
+static unsigned get_number_words(const char *s, char c)
 {
-	size_t	word_len;
-	char	*word;
+	char		*cur_delim;
+	char		*tail;
+	unsigned	words;
+	unsigned	s_len;
+	size_t		ft_strlen(const char *);
+	char*		ft_memchr(const char *, char, size_t);
+	s_len = ft_strlen(s);
+	tail = get_next_word_beg((char *)s, c);
+	words = 0;
+	while (*tail)
+	{	
+		cur_delim = ft_memchr(tail, c, s_len - (tail - (char *)s));
+		if (!cur_delim && *tail)
+		{
+			words++;
+			break;
+		}
+		tail = get_next_word_beg(cur_delim, c);
+		words++;
+	}
+	return (words);
+}
 
-	word_len = cur_delim - tail;
-	word = (char *)malloc(sizeof(char) * (word_len + 1));
+static char*	get_next_word(char **tail, char c)
+{
+	char		*word;
+	char		*cur_delim;
+	char		*ft_strchr(const char *, int);
+	char		*ft_strlcpy(char *, const char *, size_t);
+	char		*tail_val;
+
+	tail_val = get_next_word_beg(*tail, c);
+	cur_delim = ft_strchr(tail_val, c);
+	if (!cur_delim)
+		cur_delim = ft_strchr(tail_val, 0);
+	word = (char *)malloc(sizeof(char) * (cur_delim - tail_val + 1));
 	if (!word)
 		return (NULL);
-	ft_strlcpy(word, tail, word_len + 1);
+	ft_strlcpy(word, tail_val, cur_delim - tail_val + 1);
+	*tail = cur_delim;
 	return (word);
 }
 
-static char	**init_split(char *tail, size_t count)
+static void		clean_split(char **split, unsigned i)
 {
-	char	**split;
-
-	if (*tail)
-		count++;
-	split = (char **)malloc(sizeof(char *) * (count + 1));
-	if (!split)
-		return (NULL);
-	split[count--] = NULL;
-	if (*tail)
-		split[count] = ft_strdup(tail);
-	return (split);
+	while (i > 0)
+	{
+		free(split[i - 1]);
+		i--;
+	}
 }
 
-/*окончание - нет разделителя*/
-/*вернуть указатель на выделенную под массив слпита память */
-/*разделить на слово и остаток выделив под слово память,*/
-
 char	**ft_split(const char *s, char c)
-{
-	static size_t	count_words;
-	char			**split;
-	char			*word;
-	char			*tail;
-	char			*cur_delim;
+{	
+	unsigned 	words;
+	char		**split;
+	char		**tail;
+	char		*tail_val;
+	unsigned	i;
 
-	tail = start_string((char *)s, c);
-	cur_delim = ft_memchr((const void *)tail, (int) c, ft_strlen(tail));
-	if (!cur_delim)
-		return (init_split(tail, count_words));
-	word = get_word(tail, cur_delim);
-	if (!word)
+	i = 0;
+	words = get_number_words(s, c);
+	split = (char **)malloc(sizeof(char *) * (words + 1));
+	tail_val = (char *)s;
+	tail = &tail_val;
+	if (!split) 
 		return (NULL);
-	count_words++;
-	split = ft_split(cur_delim, c);
-	if (!split)
+	split[words] = NULL;
+	while (i < words)
 	{
-		free(word);
-		return (NULL);
+		split[i] = get_next_word(tail, c);
+		if (!split[i])
+		{
+			clean_split(split, i);
+			return (NULL);
+		}
+		i++;
 	}
-	split[--count_words] = word;
 	return (split);
 }
 /*
 #include <stdio.h>
 
-int main()
+static void	print_split(char **split)
 {
-	char **split;
-
-	split = ft_split(" 42 and all smth ", ' ');
 	while (*split)
 	{
 		printf("%s\n", *split);
 		split++;
 	}
+}
 
-}*/
+
+int main()
+{
+	print_split(ft_split(" fhgdfh fgdfh fdhdfh   ", 32));
+
+	print_split(ft_split("fhgdfh fgdfh fdhdfh", 32));
+	print_split(ft_split("fhgdfh fgdfh fdhdfh    ", 32));
+	print_split(ft_split("    fhgdfh fgdfh fdhdfh", 32));
+	print_split(ft_split("    ", 32));
+	print_split(ft_split("", 32));
+
+	return (0);
+}
+*/
