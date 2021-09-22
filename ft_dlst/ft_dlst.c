@@ -12,23 +12,24 @@ t_dlist	*ft_dlst_new_elem(void *content)
 	return (new_elem);
 }
 
-void	ft_dlst_add(t_dlist **dlst, void *content)
+void	ft_dlst_add(t_dlist **dlst, t_dlist *new_elem)
 {
 	t_dlist *tmp;
 
 	tmp = *dlst;
-	*dlst = ft_dlst_new_elem(content);
-	if (tmp)
-	{
-		(*dlst)->next = tmp;
-		(*dlst)->prev = tmp->prev;
-		if (tmp->prev == tmp)
-			tmp->next = *dlst;
-		else
-			tmp->prev->next = *dlst;
-		tmp->prev = *dlst;
-	}
+	*dlst = new_elem;
+    if (!tmp)
+    {
+        (*dlst)->next = *dlst;
+        (*dlst)->prev = *dlst;
+        return ;
+    }
+    (*dlst)->next = tmp;
+    (*dlst)->prev = tmp->prev;
+    tmp->prev->next = *dlst;
+    tmp->prev = *dlst;
 }
+
 size_t ft_dlst_size(t_dlist *dlst)
 {
     size_t  res;
@@ -55,12 +56,11 @@ t_dlist   *ft_dlst_pop(t_dlist **dlst, t_dlist *cur)
         return NULL;
     neigh_next = cur->next;
     neigh_prev = cur->prev;
-    if (*dlst == cur) {
+    if (*dlst == cur)
+    {
         *dlst = neigh_next;
         if (neigh_next == cur)
             *dlst = NULL;
-        else if (neigh_next == neigh_prev)
-            neigh_next->next = neigh_next;
     }
     neigh_next->prev = neigh_prev;
     neigh_prev->next = neigh_next;

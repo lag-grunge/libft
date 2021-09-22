@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
+#include "libft.h"
 
 static char*	get_next_word_beg(char *cur_delim, char c) 
 {
@@ -20,7 +19,7 @@ static char*	get_next_word_beg(char *cur_delim, char c)
 	i = 0;	
 	while (cur_delim[i] && cur_delim[i] == c)
 		i++;
-	return (cur_delim + i); 
+	return (cur_delim + i);
 }
 
 static unsigned get_number_words(const char *s, char c)
@@ -29,8 +28,7 @@ static unsigned get_number_words(const char *s, char c)
 	char		*tail;
 	unsigned	words;
 	unsigned	s_len;
-	size_t		ft_strlen(const char *);
-	char*		ft_memchr(const char *, char, size_t);
+
 	s_len = ft_strlen(s);
 	tail = get_next_word_beg((char *)s, c);
 	words = 0;
@@ -52,8 +50,6 @@ static char*	get_next_word(char **tail, char c)
 {
 	char		*word;
 	char		*cur_delim;
-	char		*ft_strchr(const char *, int);
-	char		*ft_strlcpy(char *, const char *, size_t);
 	char		*tail_val;
 
 	tail_val = get_next_word_beg(*tail, c);
@@ -68,34 +64,23 @@ static char*	get_next_word(char **tail, char c)
 	return (word);
 }
 
-static void		clean_split(char **split, unsigned i)
-{
-	while (i > 0)
-	{
-		free(split[i - 1]);
-		i--;
-	}
-}
-
 char	**ft_split(const char *s, char c)
 {	
 	unsigned 	words;
 	char		**split;
-	char		**tail;
-	char		*tail_val;
+	char		*tail;
 	unsigned	i;
 
 	i = 0;
 	words = get_number_words(s, c);
 	split = (char **)malloc(sizeof(char *) * (words + 1));
-	tail_val = (char *)s;
-	tail = &tail_val;
-	if (!split) 
+	tail = (char *)s;
+	if (!split)
 		return (NULL);
 	split[words] = NULL;
 	while (i < words)
 	{
-		split[i] = get_next_word(tail, c);
+		split[i] = get_next_word(&tail, c);
 		if (!split[i])
 		{
 			clean_split(split, i);
@@ -110,13 +95,13 @@ char	**ft_split(const char *s, char c)
 
 static void	print_split(char **split)
 {
+    printf("%p\n", split);
 	while (*split)
 	{
 		printf("%s\n", *split);
 		split++;
 	}
 }
-
 
 int main()
 {
@@ -129,5 +114,4 @@ int main()
 	print_split(ft_split("", 32));
 
 	return (0);
-}
-*/
+}*/
