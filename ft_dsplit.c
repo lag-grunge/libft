@@ -40,7 +40,7 @@ size_t ft_dsplit_fill(char **ds, size_t j, char *fsi, char c2)
 	return (j_n);
 }
 
-char **ft_dsplit(char *s, char c1, char c2)
+char **ft_dsplit(const char *s, char c1, char c2)
 {
 	char	**fs;
 	char	**ds;
@@ -71,6 +71,7 @@ char **ft_dsplit(char *s, char c1, char c2)
 	return (ds);
 }
 
+/*
 #include <stdio.h>
 
 static void	print_split(char **split)
@@ -88,4 +89,4 @@ int main()
 	print_split(ds);
 	return (0);
 
-}
+}*/

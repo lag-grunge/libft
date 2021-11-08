@@ -29,6 +29,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(const char *s, char c);
+char	**ft_dsplit(const char *s, char c1, char c2);
 char*	get_next_word(char **tail, char c);
 char*	get_next_word_beg(char *cur_delim, char c);
 t_uint get_number_words(const char *s, char c);
