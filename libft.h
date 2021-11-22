@@ -29,6 +29,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(const char *s, char c);
+char	**ft_dsplit(const char *s, char c1, char c2);
+char*	get_next_word(char **tail, char c);
+char*	get_next_word_beg(char *cur_delim, char c);
+t_uint get_number_words(const char *s, char c);
+size_t  ft_spllen(char **spl);
+void    clean_split(char **split, unsigned i);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
@@ -63,7 +69,5 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-
-int	get_next_line(int fd, char **line);
 
 #endif
