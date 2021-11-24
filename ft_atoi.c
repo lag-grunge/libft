@@ -26,14 +26,6 @@ RETURN VALUE
        The converted value or 0 on error.
 **/
 
-static int	ft_isspace(int c)
-{
-	unsigned char	cu;
-
-	cu = (unsigned char)c;
-	return ((9 <= cu && cu <= 13) || cu == 32);
-}
-
 static int	check_overflow(int n1, int n2, int sign)
 {
 	if (sign == 1)
