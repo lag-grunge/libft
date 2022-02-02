@@ -4,11 +4,9 @@ int	ft_atoi(char *s)
 {
 	long long int	n;
 	int			sign;
-	t_uint	digits;
 
 	n = 0;
 	sign = 1;
-	digits = 0;
 	while (ft_isspace(*s))
 		s++;
 	if (*s != '-' && *s != '+' && !ft_isdigit(*s))
