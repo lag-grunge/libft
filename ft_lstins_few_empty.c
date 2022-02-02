@@ -6,7 +6,7 @@
 /*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 23:08:47 by sdalton           #+#    #+#             */
-/*   Updated: 2022/02/02 23:08:49 by sdalton          ###   ########.fr       */
+/*   Updated: 2022/02/02 23:10:18 by sdalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_list	*ft_lstins_few_empty(t_list *list, int num)
 	}
 	cur = list;
 	next = list->next;
-	while (num)
+	while (num > 0)
 	{
 		cur->next = ft_lstnew(NULL);
 		if (!cur->next)
