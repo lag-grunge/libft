@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstins_few_empty.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sdalton <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/02 23:08:47 by sdalton           #+#    #+#             */
+/*   Updated: 2022/02/02 23:08:49 by sdalton          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 t_list	*ft_lstins_few_empty(t_list *list, int num)
@@ -27,7 +39,7 @@ t_list	*ft_lstins_few_empty(t_list *list, int num)
 	cur->next = next;
 	return (list);
 }
-
+/*
 #include <stdio.h>
 
 int main(int argc, char *argv[])
@@ -75,4 +87,4 @@ int main(int argc, char *argv[])
 		printf("%s\n", (char *)cur->content);
 		cur = cur->next;
 	}
-}
+}*/
