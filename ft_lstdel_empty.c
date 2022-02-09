@@ -29,8 +29,8 @@ void	ft_lstdel_empty(t_list **list)
 				*list = cur->next;
 			else
 				prev->next = cur->next;
+			cur = cur->next;
 			ft_lstdelone(tmp, free);
-			cur = prev->next;
 		}
 		else
 		{
