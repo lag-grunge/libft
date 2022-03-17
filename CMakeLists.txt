@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 project(libft)
+include_directories(./)
 add_library(libft.a ft_atoi_base.c ft_atoi.c ft_bzero.c ft_calloc.c ft_dsplit.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_isspace.c
         ft_itoa.c
         ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdel_empty.c ft_lstdelone.c ft_lstins_few_empty.c ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
